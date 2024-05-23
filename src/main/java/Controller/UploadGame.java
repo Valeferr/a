@@ -6,8 +6,10 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,6 +35,8 @@ public class UploadGame extends HttpServlet {
 	
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	LocalDateTime now = LocalDateTime.now();
+	
+	private static final List<String> ALLOWED_EXTENSIONS = Arrays.asList("jpg", "jpeg", "png", "gif");
 	
 	
     public UploadGame() {
@@ -70,7 +74,7 @@ public class UploadGame extends HttpServlet {
 		if (request.getParts() != null && request.getParts().size() > 0) {
 			for (Part part : request.getParts()) {
 				fileName = extractFileName(part);
-			
+						
 				if (fileName != null && !fileName.equals("")) {
 					part.write(savePath + File.separator + fileName);
 					g1.setImg(fileName);

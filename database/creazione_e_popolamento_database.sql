@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS utenti;
 
 CREATE TABLE utenti (	
   nome_utente varchar(50) not null ,
-  passwrod varchar(50) not null ,
+  passwrod varchar(50) not null ,  
   role varchar(5) not null,
   balance float(2) DEFAULT 0,
   nome varchar(50) not null,
